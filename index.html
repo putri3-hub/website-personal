@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Profil Pribadi Saya - Putri Ananda Palipadang</title>
+  <!--
+    FILE: index.html
+    Instruksi: letakkan folder "images" di satu level dengan file ini dan simpan
+    foto-foto dengan nama: foto 1.jpg  dan foto 2.jpg
+    (afy1 = gambar 4, afy2 = gambar 5 dari yang kamu kirim)
+  -->
+  <style>
+    /* Reset sederhana */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+
+    /* Tema estetika gelap */
+    body{
+      background:#531a1a;
+      color:#d29944;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      line-height:1.6;
+      padding:28px;
+    }
+
+    /* Kontainer utama menyerupai mockup (rounded panel) */
+    .card{
+      max-width:920px;
+      margin:20px auto;
+      background:linear-gradient(180deg,#382424 0%, #262646 100%);
+      border-radius:18px;
+      padding:28px;
+      box-shadow:0 6px 30px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    header{display:flex;flex-direction:column;align-items:center;gap:12px}
+
+    h1#judul{
+      font-size:28px;
+      letter-spacing:0.6px;
+      color:#fff;
+    }
+    p.subtitle{color:#bdb9b6;font-size:14px}
+
+    /* Foto utama berada di paling atas, centered */
+    .photo-wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .main-photo{
+      width:320px;height:320px;border-radius:12px;object-fit:cover;cursor:pointer;
+      transition:transform .45s ease, box-shadow .25s ease;
+      box-shadow:0 10px 30px rgba(6, 4, 4, 0.6);
+      border:2px solid rgba(40, 11, 11, 0.03);
+      background:#222;
+    }
+    .main-photo.flipped{transform:scaleX(-1)}
+
+    /* Thumbnail kecil untuk mengganti foto utama */
+    .thumbs{display:flex;gap:10px}
+    .thumbs img{width:72px;height:72px;border-radius:8px;object-fit:cover;cursor:pointer;border:2px solid transparent}
+    .thumbs img.active{outline:2px solid #927450}
+
+    /* Grid konten: kiri teks/tabel, kanan daftar & form */
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:22px;margin-top:20px}
+
+    /* Paragraf identitas */
+    .identitas p{margin-bottom:8px}
+    .identitas strong{color:#d18a4f}
+
+    /* Tabel biodata */
+    table#biodata{width:100%;border-collapse:collapse;margin-top:8px}
+    table#biodata th, table#biodata td{padding:10px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.03)}
+    table#biodata th{width:160px;color:#cfc9c6}
+
+    /* List hobi */
+    .lists{margin-top:14px}
+    .lists ul, .lists ol{margin-left:20px;margin-top:8px}
+
+    /* Form sederhana */
+    form.form-profil{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:14px;border-radius:10px}
+    .form-row{margin-bottom:10px}
+    label{display:block;font-size:14px;margin-bottom:6px;color:#d7d4d2}
+    input[type=text], input[type=email]{width:100%;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:#0b0b0b;color:#eee}
+    .radio-row, .checkbox-row{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+    input[type=submit]{padding:10px 14px;border-radius:8px;border:none;background:#ffd6a5;color:#111;font-weight:600;cursor:pointer}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr;}
+      .card{padding:18px}
+      .main-photo{width:260px;height:260px}
+    }
+
+    /* Keterangan kecil di footer */
+    .footer-note{color:#9b9693;font-size:13px;margin-top:18px;text-align:center}
+  </style>
+</head>
+<body>
+  <main class="card" id="container" title="Panel Profil Putri Ananda Palipadang">
+
+    <header>
+      <h1 id="judul">Profil Pribadi Saya</h1>
+      <p class="subtitle">Mahasiswa — Contoh tugas web statis</p>
+
+      <!-- FOTO UTAMA (letakkan di folder images/ dengan nama afy1.jpg dan afy2.jpg) -->
+      <div class="photo-wrap" id="photoWrap">
+        <img id="mainPhoto" class="main-photo" src="foto 3.jpg" alt="Foto profil Putri Ananda Palipadang (afy1)" width="320" height="320" title="Klik untuk balik/membalik foto">
+
+        <div class="thumbs" aria-hidden="false">
+          <img id="t1" src="foto 1.jpg" alt="thumbnail afy1" class="active" data-src="foto 1.jpg">
+          <img id="t2" src="foto 2.jpg" alt="thumbnail afy2" data-src="foto 2.jpg">
+        </div>
+        <small style="color:#bebab8;font-size:13px">Klik foto utama untuk membalik (flip). Klik thumbnail untuk ganti foto.</small>
+      </div>
+    </header>
+
+    <section class="grid">
+      <!-- KIRI: teks, paragraf, tabel -->
+      <div>
+        <article class="identitas" id="identitas" title="Paragraf identitas">
+          <!-- No.3: 3 paragraf identitas -->
+          <p><strong>Nama:</strong> Putri Ananda Palipadang</p>
+          <p><strong>NIM:</strong> 246270027</p>
+          <p><strong>Hobi:</strong> Membaca, menonton, traveling</p>
+        </article>
+
+        <!-- Tabel biodata (no.4) -->
+        <h2 style="margin-top:16px;color:#fff;font-size:18px">Biodata Diri</h2>
+        <table id="biodata" title="Tabel biodata">
+          <tr><th>Nama</th><td>Putri Ananda Palipadang</td></tr>
+          <tr><th>Tanggal Lahir</th><td>06 Maret 2004</td></tr>
+          <tr><th>Alamat</th><td>Jl. Vetran</td></tr>
+          <tr><th>Email</th><td>putriananda@Gmail.com</td></tr>
+        </table>
+
+        <!-- Daftar hobi & aktivitas (no.5) -->
+        <div class="lists">
+          <h3 style="margin-top:12px;color:#fff">Daftar Hobi</h3>
+          <ul title="Daftar hobi tidak berurutan">
+            <li>mendengarkan musik</li>
+            <li>membaca (novel)</li>
+            <li>nonton (film barat, drama China, Korea)</li>
+          </ul>
+
+          <h3 style="margin-top:10px;color:#fff">Aktivitas Favorit</h3>
+          <ol title="Aktivitas favorit berurutan">
+            <li>traveling</li>
+            <li>menonton drakor</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- KANAN: form sesuai no.6 -->
+      <aside>
+        <h2 style="color:#e310d5;margin-bottom:8px">Form Kontak</h2>
+        <form id="form-profil" class="form-profil" title="Formulir input sederhana" onsubmit="event.preventDefault(); alert('Terimakasih, data tidak dikirim (tugas statis).');">
+
+          <div class="form-row">
+            <label for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" placeholder="Masukkan nama" required>
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="email@example.com" required>
+          </div>
+
+          <div class="form-row">
+            <label>Jenis Kelamin</label>
+            <div class="radio-row">
+              <label><input type="radio" name="gender" value="Laki-laki"> Laki-laki</label>
+              <label><input type="radio" name="gender" value="Perempuan"> Perempuan</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label>Hobi (pilih minimal 1)</label>
+            <div class="checkbox-row">
+              <label><input type="checkbox" name="hobi" value="Mendengarkan musik"> Mendengarkan musik</label>
+              <label><input type="checkbox" name="hobi" value="Membaca"> Membaca</label>
+              <label><input type="checkbox" name="hobi" value="Menonton"> Menonton</label>
+            </div>
+          </div>
+
+          <input type="submit" value="Submit">
+        </form>
+
+    
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    // JavaScript kecil untuk fitur: flip main photo on click + ganti gambar dari thumbnail
+    (function(){
+      const main = document.getElementById('mainPhoto');
+      const t1 = document.getElementById('t1');
+      const t2 = document.getElementById('t2');
+
+      // flip on single click
+      main.addEventListener('click', ()=>{
+        main.classList.toggle('flipped');
+      });
+
+      // helper: set active thumbnail
+      function setActiveThumb(active){
+        [t1,t2].forEach(t=> t.classList.toggle('active', t===active));
+      }
+
+      // change main photo when clicking thumbnail (ke thumbnail image path)
+      [t1,t2].forEach(t => {
+        t.addEventListener('click', ()=>{
+          const src = t.dataset.src;
+          if(!src) return;
+          main.classList.remove('flipped'); // reset flip saat ganti foto
+          main.src = src;
+          setActiveThumb(t);
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
